@@ -24,11 +24,30 @@ class _HomePageState extends State<HomePage> {
       }
     });
   }
+  void _addItem(){
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // retorna um objeto do tipo Dialog
+        return AlertDialog(
+          title: new Text("Item inserido"),
+          content: new Text("Macarrão. Quantidade $_counter"),
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text("Adicionar na feira"),
+          actions: [
+            Switch(
+                value: AppController.instance.isDarkTheme,
+                onChanged: (value) {
+                  AppController.instance.changeTheme();
+                }),
+          ],
         ),
         body: Center(
           child: Column(
@@ -43,11 +62,6 @@ class _HomePageState extends State<HomePage> {
                 style: Theme.of(context).textTheme.displayMedium,
 
               ),
-              Switch(
-                  value: AppController.instance.isDarkTheme,
-                  onChanged: (value) {
-                    AppController.instance.changeTheme();
-                  }),
             ],
           ),       
         ),
@@ -70,6 +84,16 @@ class _HomePageState extends State<HomePage> {
                     Icons.arrow_downward_outlined
                 ),
                 onPressed: _decrementCounter,
+                heroTag: null,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              FloatingActionButton(
+                child: Icon(
+                    Icons.add
+                ),
+                onPressed: _addItem,
                 heroTag: null,
               )
             ]
