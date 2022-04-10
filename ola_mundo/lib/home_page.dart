@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ola_mundo/app_controller.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,6 +10,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _counter = 0;
+  bool _isDarkTheme = false;
 
   void _incrementCounter() {
     setState(() {
@@ -41,9 +43,15 @@ class _HomePageState extends State<HomePage> {
                 style: Theme.of(context).textTheme.displayMedium,
 
               ),
+              Switch(
+                  value: AppController.instance.isDarkTheme,
+                  onChanged: (value) {
+                    AppController.instance.changeTheme();
+                  }),
             ],
-          ),
+          ),       
         ),
+
         floatingActionButton: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
