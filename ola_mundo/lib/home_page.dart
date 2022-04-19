@@ -42,11 +42,8 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text("Adicionar na feira"),
           actions: [
-            Switch(
-                value: AppController.instance.isDarkTheme,
-                onChanged: (value) {
-                  AppController.instance.changeTheme();
-                }),
+            CustomSwitcher()
+
           ],
         ),
         body: Center(
@@ -99,5 +96,18 @@ class _HomePageState extends State<HomePage> {
             ]
         )
     );
+  }
+}
+
+class CustomSwitcher extends StatelessWidget {
+  const CustomSwitcher({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+        value: AppController.instance.isDarkTheme,
+        onChanged: (value) {
+          AppController.instance.changeTheme();
+        });
   }
 }
