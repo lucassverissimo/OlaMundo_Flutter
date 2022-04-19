@@ -46,14 +46,17 @@ class _HomePageState extends State<HomePage> {
 
           ],
         ),
-        body: Center(
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text (
                 'Macarrão',
                 style: Theme.of(context).textTheme.displayMedium,
               ),
+              CustomSwitcher(),
+
               Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.displayMedium,
