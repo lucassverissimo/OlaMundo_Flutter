@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:ola_mundo/home_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({ Key? key }) : super(key: key);
-
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -25,7 +24,6 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
-                  style: (BorderRadius.circular(10)),
                   onChanged: (text){
                     _email = text;
                   },
@@ -49,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 15),
                 RaisedButton(onPressed: () {
                   if(_email == 'lucas' && _senha == '123'){
-                    print('OK');
+                    Navigator.of(context).pushReplacementNamed('/home');
                   } else {
                     print('inválido');
                   }
