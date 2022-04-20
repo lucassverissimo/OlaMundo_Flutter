@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ola_mundo/app_controller.dart';
 
+import 'custom_swithcer.dart';
+
 class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() {
@@ -51,12 +53,6 @@ class _HomePageState extends State<HomePage> {
           height: double.infinity,
           child: Column(
             children: <Widget>[
-              Text (
-                'Macarrão',
-                style: Theme.of(context).textTheme.displayMedium,
-              ),
-              CustomSwitcher(),
-
               Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.displayMedium,
@@ -102,15 +98,3 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class CustomSwitcher extends StatelessWidget {
-  const CustomSwitcher({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Switch(
-        value: AppController.instance.isDarkTheme,
-        onChanged: (value) {
-          AppController.instance.changeTheme();
-        });
-  }
-}
